@@ -31,5 +31,6 @@ public class Policy {
     private Double nomineePercentage;
     private String typeOfPolicy;
     private String productId;
+    private String policyHolder;
 
 }
