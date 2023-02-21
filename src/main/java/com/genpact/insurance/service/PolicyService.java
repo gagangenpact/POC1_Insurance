@@ -17,4 +17,9 @@ public class PolicyService {
         return policyRepository.findAll();
     }
 
+    public List<Policy> savePolicies(List<Policy> policies) {
+        return policyRepository.saveAll(policies);
+    }
+
+
 }
