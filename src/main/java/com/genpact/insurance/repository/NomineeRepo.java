@@ -11,7 +11,7 @@ public interface NomineeRepo extends MongoRepository<Nominee, String> {
 
 
 
-    @org.springframework.data.mongodb.repository.Query(value="{userId:'?0'}",  fields="{'firstName' : 1, 'lastName' : 1}")
+    @org.springframework.data.mongodb.repository.Query(value="{userId:'?0'}",  fields="{'firstName' : 1, 'middleName': 1,'lastName' : 1}")
     List<Nominee> findByUserId(String userId);
     public long count();
 
