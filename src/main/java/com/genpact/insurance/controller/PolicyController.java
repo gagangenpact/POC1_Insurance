@@ -28,4 +28,9 @@ public class PolicyController {
         return new ResponseEntity<>(policyList, HttpStatus.OK);
     }
 
+    @PatchMapping("/policy/{polId}")
+    public void updatePolicy(@PathVariable String polId, @RequestBody Policy polDetails) {
+        policyService.updatePolDetails(polId, polDetails);
+    }
+
 }
