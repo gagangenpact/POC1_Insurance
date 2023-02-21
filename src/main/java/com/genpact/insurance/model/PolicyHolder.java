@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Document("policyholder")
+@Document("policyholders")
 @Data
 @Getter
 @Setter
