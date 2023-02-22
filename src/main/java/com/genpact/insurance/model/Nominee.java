@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document("nominee")
+@Document("nominees")
 public class Nominee {
 
     @Id
