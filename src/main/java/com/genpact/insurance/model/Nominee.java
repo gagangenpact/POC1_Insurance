@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -12,11 +12,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 @Document("nominees")
 public class Nominee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int serialNo;
     public String userId;
     public String firstName;

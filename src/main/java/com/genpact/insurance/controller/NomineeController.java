@@ -20,7 +20,7 @@ public class NomineeController {
         return nomineeService.displayNominees(userId);
     }
 
-    @PostMapping(value = "/insertNominee")
+    @PostMapping(value = "/nominees")
     public ResponseEntity<Nominee> insertNominee(@RequestBody Nominee nominee) {
         nomineeService.insertNominee(nominee);
         return new ResponseEntity<Nominee>( nominee, HttpStatus.CREATED);
