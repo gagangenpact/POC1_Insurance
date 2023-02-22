@@ -16,8 +16,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PolicyHolder {
+	
 	@Id
-	private String dependentId;
 	private String holderId;
 	private String firstName;
 	private String middleName;
@@ -30,5 +30,9 @@ public class PolicyHolder {
 	private Date dob;
 	private String phoneNumber;
 	private String idProof;
+	private String policyId;
+	private String userId;
+	private String userRelation;
+	
 
 }

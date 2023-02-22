@@ -1,11 +1,14 @@
 package com.genpact.insurance.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,20 +32,20 @@ public class DependentController {
 	
 
 	@GetMapping("/dependents")
-	public ResponseEntity<PolicyHolder> getPolicyHolder(@RequestParam String dependentId) {
-		PolicyHolder policyHolder = new PolicyHolder();
+	public ResponseEntity<List<PolicyHolder>> getPolicyHolder(@RequestParam String userId) {
+		List<PolicyHolder> policyHolder = new ArrayList<>();
 		try {
-			policyHolder = policyHolderService.getPolicyHolderInfo(dependentId);
+			policyHolder = policyHolderService.getPolicyHolderInfo(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<PolicyHolder>(policyHolder, HttpStatus.OK);
+		return new ResponseEntity<List<PolicyHolder>>(policyHolder, HttpStatus.OK);
 	}
 
-	@PutMapping("/dependents")
-    public ResponseEntity<PolicyHolder> updatePolicyHolder(@RequestParam String dependentId,
+	@PatchMapping("/dependents")
+    public ResponseEntity<PolicyHolder> updatePolicyHolder(@RequestParam String holderId,
             @RequestBody PolicyHolder policyHolderInfo) {		
-		PolicyHolder policyHolder= policyHolderService.updatePolicyHolderInfo(dependentId, policyHolderInfo);
+		PolicyHolder policyHolder= policyHolderService.updatePolicyHolderInfo(holderId, policyHolderInfo);
 		return new ResponseEntity<PolicyHolder>(policyHolder,HttpStatus.OK);
 	}
 

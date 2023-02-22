@@ -1,7 +1,6 @@
 package com.genpact.insurance.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +22,25 @@ public class TransactionService {
 		return transactionRepository.findByUserId(userId);
 	}
 
-	public TransactionDetails updateTransactions(String transactionId, TransactionDetails transaction) {
-		Optional<TransactionDetails> transactionDetail = transactionRepository.findById(transactionId);
-		if (transactionDetail.isPresent()) {
-			transactionRepository.save(transaction);
+	public TransactionDetails updateTransactions(String orderId, TransactionDetails transaction) {
+
+		if (transactionRepository.findById(orderId).isPresent()) {
+			TransactionDetails existingRecord = transactionRepository.findById(orderId).get();
+			existingRecord.setAmount(transaction.getAmount());
+			existingRecord.setBankName(transaction.getBankName());
+			existingRecord.setDate(transaction.getDate());
+			existingRecord.setPaymentGateway(transaction.getPaymentGateway());
+			existingRecord.setPaymentMode(transaction.getPaymentMode());
+			existingRecord.setTransactionId(transaction.getTransactionId());
+			existingRecord.setTransactionStatus(transaction.getTransactionStatus());
+			existingRecord.setUpi(transaction.getUpi());
+			existingRecord.setUserId(transaction.getUserId());
+			existingRecord.setWallets(transaction.getWallets());
+			return transactionRepository.save(existingRecord);
+		} else {
+			return null;
 		}
 
-		return transaction;
 	}
 
 }

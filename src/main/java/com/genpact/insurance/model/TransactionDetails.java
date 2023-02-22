@@ -1,5 +1,7 @@
 package com.genpact.insurance.model;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,14 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TransactionDetails {
+
 	@Id
-	private String transactionId;
+	private String orderId;
 	private String userId;
-	private String bankName;
-	private String paymentGateway;
-	private String upi;
-	private String wallets;
 	private String paymentMode;
-	private String paymentDetails;
+	private String wallets;
+	private String upi;
+	private String paymentGateway;
+	private String bankName;
+	private Double amount;
+	private String transactionId;
+	private String transactionStatus;
+	private Date date;
 
 }
