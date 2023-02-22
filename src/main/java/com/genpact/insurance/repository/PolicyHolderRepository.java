@@ -12,8 +12,6 @@ public interface PolicyHolderRepository extends MongoRepository<PolicyHolder, St
 	@Query("{userId:'?0'}")
 	List<PolicyHolder> findByUserId(String userId);
 
-
-	
     public long count();
 
 }
